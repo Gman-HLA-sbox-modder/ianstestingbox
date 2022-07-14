@@ -1,0 +1,87 @@
+{
+  "Title": "Sandbox Game",
+  "Type": "game",
+  "Org": "facepunch",
+  "Ident": "sandbox",
+  "Schema": 1,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "ResourcePaths": null,
+  "HasCode": true,
+  "CodePath": "code",
+  "RootNamespace": "Sandbox",
+  "Metadata": {
+    "MapList": [
+      "facepunch.construct"
+    ],
+    "PerMapRanking": false,
+    "LeaderboardType": "None",
+    "RankType": "None",
+    "MapSelect": "Unrestricted",
+    "GameNetworkType": "Multiplayer",
+    "MaxPlayers": 64,
+    "MinPlayers": 1,
+    "Collision": {
+      "Defaults": {
+        "solid": "Collide",
+        "trigger": "Trigger",
+        "ladder": "Ignore",
+        "water": "Trigger",
+        "debris": "Unset",
+        "player": "Unset"
+      },
+      "Pairs": [
+        {
+          "a": "solid",
+          "b": "solid",
+          "r": "Collide"
+        },
+        {
+          "a": "trigger",
+          "b": "playerclip",
+          "r": "Ignore"
+        },
+        {
+          "a": "trigger",
+          "b": "solid",
+          "r": "Trigger"
+        },
+        {
+          "a": "solid",
+          "b": "trigger",
+          "r": "Collide"
+        },
+        {
+          "a": "playerclip",
+          "b": "solid",
+          "r": "Collide"
+        },
+        {
+          "a": "debris",
+          "b": "debris"
+        },
+        {
+          "a": "debris",
+          "b": "player",
+          "r": "Ignore"
+        },
+        {
+          "a": "trigger",
+          "b": "player"
+        },
+        {
+          "a": "ladder",
+          "b": "player"
+        },
+        {
+          "a": "trigger",
+          "b": "debris"
+        },
+        {
+          "a": "ladder",
+          "b": "debris"
+        }
+      ]
+    }
+  }
+}
