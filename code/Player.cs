@@ -103,6 +103,13 @@ partial class SandboxPlayer : Player
 	}
 
 	[ClientRpc]
+	public void DidDamage( Vector3 pos, float amount, float healthinv, bool isdeath )
+	{
+		Sound.FromScreen( "dm.ui_attacker" )
+			.SetPitch( 1 + healthinv * 1 );
+	}
+
+	[ClientRpc]
 	public void TookDamage( DamageFlags damageFlags, Vector3 forcePos, Vector3 force )
 	{
 	}
