@@ -10,11 +10,13 @@ public partial class Wandertest : NPC
 {
 	public override float SpawnHealth => 100;
 
-	public NavSteer Steer;
+	// public NavSteer Steer;
 
 	public override void Spawn()
 	{
 		base.Spawn();
+
+		SetModel("models/scientist/scientist.vmdl");
 
 		var wander = new Sandbox.Nav.Wander();
 		Steer = wander;

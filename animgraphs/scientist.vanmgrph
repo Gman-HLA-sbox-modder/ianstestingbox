@@ -2702,7 +2702,7 @@
 			},
 			{
 				_class = "CFloatAnimParameter"
-				m_name = "speed"
+				m_name = "move_speed"
 				m_id = 
 				{
 					m_id = 196653539
