@@ -79,51 +79,51 @@ public partial class Scientist : NPC
 			}
 		}
 
-		var entInSphere = FindInSphere(Position, 100);
+		// var entInSphere = FindInSphere(Position, 50);
 
-		DebugOverlay.Sphere(Position, 100, Color.Green);
+		// DebugOverlay.Sphere(Position, 100, Color.Green);
 
-		foreach (var entity in entInSphere)
-		{
-			if (entity is SandboxPlayer player) 
-			{
-				if (player.Health < 100) 
-				{
-					Steer = new NavSteer();
-					Steer.Target = player.Position;
+		// foreach (var entity in entInSphere)
+		// {
+		// 	if (entity is SandboxPlayer player) 
+		// 	{
+		// 		if (player.Health < 100) 
+		// 		{
+		// 			Steer = new NavSteer();
+		// 			Steer.Target = player.Position;
 
-					if (Velocity == 0 && player.Velocity == 0)
-					{
-						HealPlayer(player);	
+		// 			if (Velocity == 0 && player.Velocity == 0)
+		// 			{
+		// 				HealPlayer(player);	
 
-						if (TimeSinceStartedHeal >= 2.5f) 
-						{
-							player.Health += 25;
-						}
+		// 				if (TimeSinceStartedHeal >= 2.5f) 
+		// 				{
+		// 					player.Health += 25;
+		// 				}
 
-						if (TimeSinceStartedHeal >= 7.0f) 
-						{
-							Steer = new Sandbox.Nav.Wander();
-						}
-					}
-				}
-			} else 
-			{
-				Steer = new Sandbox.Nav.Wander();
-			}
-		}
+		// 				if (TimeSinceStartedHeal >= 7.0f) 
+		// 				{
+		// 					Steer = new Sandbox.Nav.Wander();
+		// 				}
+		// 			}
+		// 		}
+		// 	} else 
+		// 	{
+		// 		Steer = new Sandbox.Nav.Wander();
+		// 	}
+		// }
 	}
 
-	private void HealPlayer(SandboxPlayer player) 
-	{
-		if (player.LifeState != LifeState.Alive) return;
+	// private void HealPlayer(SandboxPlayer player) 
+	// {
+	// 	if (player.LifeState != LifeState.Alive) return;
 
-		TimeSinceStartedHeal = 0;
+	// 	TimeSinceStartedHeal = 0;
 
-		Steer = null;
+	// 	Steer = null;
 
-		SetAnimParameter("b_heal", true);
-	}
+	// 	SetAnimParameter("b_heal", true);
+	// }
 
 	public override void OnKilled() 
 	{
