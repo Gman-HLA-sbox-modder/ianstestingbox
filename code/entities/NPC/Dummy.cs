@@ -34,8 +34,6 @@ public partial class Dummy : NPC
 
 		if (TimeSinceLastIBAttempt >= 5.0f)
 		{
-			Log.Info(randInt);
-
 			if (randInt == 1) 
 			{
 				SetAnimParameter("b_idlebreaker", true);
