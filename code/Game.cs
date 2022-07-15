@@ -155,5 +155,4 @@ partial class SandboxGame : Game
 	{
 		KillFeed.Current?.AddEntry( leftid, left, rightid, right, method );
 	}
-
 }

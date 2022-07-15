@@ -17,6 +17,8 @@ public partial class Wandertest : NPC
 	private TimeSince TimeSinceLastIBAttempt;
 	private TimeSince TimeSinceFirstScared;
 
+	private TimeSince TimeSinceStartedHeal;
+
 	private Vector3 LastPosition {get; set;}
 
 	// public NavSteer Steer;
@@ -76,6 +78,51 @@ public partial class Wandertest : NPC
 				TimeSinceLastIBAttempt = 0;
 			}
 		}
+
+		var entInSphere = FindInSphere(Position, 100);
+
+		DebugOverlay.Sphere(Position, 100, Color.Green);
+
+		foreach (var entity in entInSphere)
+		{
+			if (entity is SandboxPlayer player) 
+			{
+				if (player.Health < 100) 
+				{
+					Steer = new NavSteer();
+					Steer.Target = player.Position;
+
+					if (Velocity == 0 && player.Velocity == 0)
+					{
+						HealPlayer(player);	
+
+						if (TimeSinceStartedHeal >= 2.5f) 
+						{
+							player.Health += 25;
+						}
+
+						if (TimeSinceStartedHeal >= 7.0f) 
+						{
+							Steer = new Sandbox.Nav.Wander();
+						}
+					}
+				}
+			} else 
+			{
+				Steer = new Sandbox.Nav.Wander();
+			}
+		}
+	}
+
+	private void HealPlayer(SandboxPlayer player) 
+	{
+		if (player.LifeState != LifeState.Alive) return;
+
+		TimeSinceStartedHeal = 0;
+
+		Steer = null;
+
+		SetAnimParameter("b_heal", true);
 	}
 
 	public override void OnKilled() 
