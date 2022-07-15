@@ -1,12 +1,12 @@
 ﻿using Sandbox;
 
-[Library( "weapon_npctool", Title = "Npc Tool" )]
+[Library( "weapon_npcremover", Title = "Npc Killer" )]
 partial class NPCSpawner : Weapon
 {
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
 
-	public override float PrimaryRate => 115.0f;
-	public override float SecondaryRate => 115.0f;
+	public override float PrimaryRate => 15.0f;
+	public override float SecondaryRate => 15.0f;
 
 	public TimeSince TimeSinceDischarge { get; set; }
 
@@ -24,25 +24,25 @@ partial class NPCSpawner : Weapon
 
 	public override void AttackPrimary()
 	{
-		TimeSincePrimaryAttack = 0;
-		TimeSinceSecondaryAttack = 0;
+		TimeSincePrimaryAttack = -0.5f;
+		TimeSinceSecondaryAttack = -0.5f;
 
 		(Owner as AnimatedEntity)?.SetAnimParameter( "b_attack", true );
 
 		ShootEffects();
-		PlaySound( "scientist.hurt" );
-		//ConsoleSystem.Run( "npcwander_spawn" );
+		ConsoleSystem.Run( "npc_clear" );
+		PlaySound( "balloon_pop_cute" );
 	}
 
 	public override void AttackSecondary()
 	{
-		TimeSincePrimaryAttack = 0f;
-		TimeSinceSecondaryAttack = 0f;
+		TimeSincePrimaryAttack = -0.5f;
+		TimeSinceSecondaryAttack = -0.5f;
 
 		(Owner as AnimatedEntity)?.SetAnimParameter( "b_attack", true );
 
 		ConsoleSystem.Run( "npc_clear" );
-		PlaySound( "scientist.hurt" );
+		PlaySound( "balloon_pop_cute" );
 	}
 
 	private void Discharge()
@@ -57,7 +57,7 @@ partial class NPCSpawner : Weapon
 		var rot = muzzle.Rotation;
 
 		ShootEffects();
-		PlaySound( "rust_pistol.shoot" );
+		PlaySound( "balloon_pop_cute" );
 		ShootBullet( pos, rot.Forward, 0.05f, 1.5f, 9.0f, 3.0f );
 
 		ApplyAbsoluteImpulse( rot.Backward * 200.0f );

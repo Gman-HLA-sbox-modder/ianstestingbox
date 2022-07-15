@@ -34,7 +34,7 @@ public partial class NPC : AnimatedEntity
 	public static void NpcClear()
 	{
 		foreach (var npc in Entity.All.OfType<NPC>().ToArray())
-			npc.Delete();
+			npc.OnKilled();
 		Log.Info("Killed All NPCs!");
 	}
 
