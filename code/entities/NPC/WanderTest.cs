@@ -76,8 +76,6 @@ public partial class Wandertest : NPC
 				TimeSinceLastIBAttempt = 0;
 			}
 		}
-
-		Log.Info("working or something idfk");
 	}
 
 	public override void OnKilled() 

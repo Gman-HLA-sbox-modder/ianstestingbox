@@ -23,7 +23,7 @@ public partial class Dummy : NPC
 		DebugOverlay.Text( this.Health.ToString(), EyePosition );
 	}
 
-	[Event.Tick]
+	// [Event.Tick]
 	public override void Tick() 
 	{
 		base.Tick();
@@ -34,6 +34,8 @@ public partial class Dummy : NPC
 
 		if (TimeSinceLastIBAttempt >= 5.0f)
 		{
+			Log.Info(randInt);
+
 			if (randInt == 1) 
 			{
 				SetAnimParameter("b_idlebreaker", true);
