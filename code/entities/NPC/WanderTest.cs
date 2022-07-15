@@ -10,28 +10,13 @@ public partial class Wandertest : NPC
 {
 	public override float SpawnHealth => 100;
 
-	Player Target;
+	public NavSteer Steer;
 
-	private void FindTarget()
+	public override void Spawn()
 	{
-		var rply = All.OfType<Player>().ToArray();
+		base.Spawn();
 
-		Target = rply[Rand.Int( 0, rply.Count() - 1 )];
-	}
-
-	public override void OnTick()
-	{
-		if ( Target == null || Target.LifeState == LifeState.Dead )
-			FindTarget();
-		else if ( Target.Position.Distance( Position ) > 100 )
-		{
-			Steer = new NavSteer();
-			Steer.Target = Target.Position;
-			Steer.DontAvoidance = e => e.Parent == Target || !e.EnableDrawing || e == this;
-		}
-		else
-		{
-			Steer = null;
-		}
+		var wander = new Sandbox.Nav.Wander();
+		Steer = wander;
 	}
 }
