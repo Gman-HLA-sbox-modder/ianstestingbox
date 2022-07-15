@@ -46,9 +46,11 @@ public partial class Wandertest : NPC
 		}
 	}
 
-	public override void Simulate(Client cl) 
+	public override void Tick()
 	{
-		base.Simulate(cl);
+		base.Tick();
+
+		// Log.Info("Sim");
 
 		if (IsScared) 
 		{

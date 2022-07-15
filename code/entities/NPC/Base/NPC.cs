@@ -338,7 +338,7 @@ public partial class NPC : AnimatedEntity
 	}
 
 	[Event.Tick.Server]
-	public void Tick()
+	public virtual void Tick()
 	{
 		MoveTick();
 		OnTick();

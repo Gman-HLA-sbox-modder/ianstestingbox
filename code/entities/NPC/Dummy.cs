@@ -24,13 +24,13 @@ public partial class Dummy : NPC
 	}
 
 	[Event.Tick]
-	public override void Simulate(Client cl) 
+	public override void Tick() 
 	{
-		base.Simulate(cl);
+		base.Tick();
 
-		Log.Info(TimeSinceLastIBAttempt);
+		// Log.Info(TimeSinceLastIBAttempt);
 
-		var randInt = Rand.Int(1, 1);
+		var randInt = Rand.Int(1, 5);
 
 		if (TimeSinceLastIBAttempt >= 5.0f)
 		{
