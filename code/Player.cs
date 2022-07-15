@@ -1,4 +1,5 @@
 ﻿using Sandbox;
+using System;
 
 partial class SandboxPlayer : Player
 {
@@ -259,6 +260,26 @@ partial class SandboxPlayer : Player
 
 			break;
 		}
+	}
+
+	[ConCmd.Admin]
+	public static void ent_create( string entity )
+	{
+		var ply = ConsoleSystem.Caller.Pawn as SandboxPlayer;
+
+		Type type = Type.GetType( entity );
+		var ent = TypeLibrary.Create( entity, type ) as Entity;
+
+		var tr = Trace.Ray( ply.EyePosition, ply.EyePosition + ply.EyeRotation.Forward * 5000 )
+					.UseHitboxes()
+					.WithAnyTags( "solid", "player", "npc" )
+					.Ignore( ply )
+					.Size( 2 );
+
+		ent.Position = tr.Run().HitPosition;
+
+		//var prize = TypeLibrary.Create( lootTable[index], t ) as Entity;
+		//prize.Position = Position;
 	}
 
 }
