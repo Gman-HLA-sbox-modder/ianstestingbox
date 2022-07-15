@@ -1,7 +1,7 @@
 ﻿namespace Sandbox.Tools
 {
-	[Library( "tool_wander", Title = "Scientist Maker", Description = "what", Group = "AAAAAA" )]
-	public partial class WanderTool : BaseTool
+	[Library( "tool_scientist", Title = "Scientist Maker", Description = "what", Group = "AAAAAA" )]
+	public partial class ScientistTool : BaseTool
 	{
 		PreviewEntity previewModel;
 		bool massless = true;
@@ -19,7 +19,7 @@
 			if ( !base.IsPreviewTraceValid( tr ) )
 				return false;
 
-			if ( tr.Entity is Wandertest )
+			if ( tr.Entity is Scientist )
 				return false;
 
 			return true;
@@ -52,7 +52,7 @@
 
 				CreateHitEffects( tr.EndPosition );
 
-				var ent = new Wandertest
+				var ent = new Scientist
 				{
 					Position = tr.EndPosition,
 					Rotation = Rotation.LookAt( tr.Normal, dir ) * Rotation.From( new Angles( 90, 0, 0 ) ),

@@ -5,8 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 [Spawnable]
-[Library( "npc_wandertest", Title = "HL1 Scientist" )]
-public partial class Wandertest : NPC
+[Library( "npc_scientist", Title = "HL1 Scientist" )]
+public partial class Scientist : NPC
 {
 	public override float SpawnHealth => 100;
 
