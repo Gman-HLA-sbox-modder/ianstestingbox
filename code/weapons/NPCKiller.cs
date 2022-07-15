@@ -1,5 +1,6 @@
 ﻿using Sandbox;
 
+[Spawnable]
 [Library( "weapon_npcremover", Title = "Npc Killer" )]
 partial class NPCSpawner : Weapon
 {

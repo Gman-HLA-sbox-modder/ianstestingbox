@@ -52,13 +52,6 @@
 
 				CreateHitEffects( tr.EndPosition );
 
-				if ( tr.Entity is Wandertest )
-				{
-					// TODO: Set properties
-
-					return;
-				}
-
 				var ent = new Wandertest
 				{
 					Position = tr.EndPosition,
