@@ -14,7 +14,7 @@ public partial class Wandertest : NPC
 
 	private bool IsScared;
 
-	private TimeSince TimeSinceLastIB;
+	private TimeSince TimeSinceLastIBAttempt;
 	private TimeSince TimeSinceFirstScared;
 
 	private Vector3 LastPosition {get; set;}
@@ -60,14 +60,19 @@ public partial class Wandertest : NPC
 			SetAnimParameter("b_isscared", false);
 		}
 
-		if (TimeSinceLastIB > 5.0f)
+		var randInt = Rand.Int(1, 5);
+
+		if (TimeSinceLastIBAttempt > 5.0f)
 		{
-			if (Rand.Int(1, 5) == 1) 
+			if (randInt == 1) 
 			{
 				SetAnimParameter("b_idlebreaker", true);
 
-				TimeSinceLastIB = 0;
-			} 
+				TimeSinceLastIBAttempt = 0;
+			} else if (randInt != 1)
+			{
+				TimeSinceLastIBAttempt = 0;
+			}
 		}
 	}
 
