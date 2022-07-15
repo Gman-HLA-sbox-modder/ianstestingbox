@@ -10,6 +10,8 @@ public partial class Wandertest : NPC
 {
 	public override float SpawnHealth => 100;
 
+	public override bool HaveDress => false;
+
 	// public NavSteer Steer;
 
 	public override void Spawn()

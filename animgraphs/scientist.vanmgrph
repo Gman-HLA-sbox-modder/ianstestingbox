@@ -614,7 +614,7 @@
 				{
 					_class = "CBlendAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 528.0, 96.0 ]
+					m_vecPosition = [ 528.0, 80.0 ]
 					m_nNodeID = 
 					{
 						m_id = 408665513
@@ -651,7 +651,7 @@
 								}
 							}
 							m_name = "Walk"
-							m_blendValue = 50.0
+							m_blendValue = 100.0
 						},
 						{
 							m_inputConnection = 
@@ -666,7 +666,7 @@
 								}
 							}
 							m_name = "Run"
-							m_blendValue = 100.0
+							m_blendValue = 200.0
 						},
 					]
 					m_blendValueSource = "Parameter"
@@ -1807,7 +1807,7 @@
 								}
 							}
 							m_name = "Walk"
-							m_blendValue = 50.0
+							m_blendValue = 100.0
 						},
 						{
 							m_inputConnection = 
@@ -1822,7 +1822,7 @@
 								}
 							}
 							m_name = "Run"
-							m_blendValue = 100.0
+							m_blendValue = 200.0
 						},
 					]
 					m_blendValueSource = "Parameter"
