@@ -18,6 +18,8 @@ public partial class Wandertest : NPC
 
 		SetModel("models/scientist/scientist.vmdl");
 
+		SetBodyGroup(1, Rand.Int(0, 3));
+
 		var wander = new Sandbox.Nav.Wander();
 		Steer = wander;
 	}
