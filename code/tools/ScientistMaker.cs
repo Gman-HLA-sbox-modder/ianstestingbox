@@ -58,11 +58,6 @@
 					Rotation = Rotation.LookAt( tr.Normal, dir ) * Rotation.From( new Angles( 90, 0, 0 ) ),
 				};
 
-				if ( attached )
-				{
-					ent.SetParent( tr.Body.GetEntity(), tr.Body.GroupName );
-				}
-
 				ent.SetModel( "models/scientist/scientist.vmdl" );
 			}
 		}
