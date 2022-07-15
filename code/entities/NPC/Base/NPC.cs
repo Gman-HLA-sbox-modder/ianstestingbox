@@ -30,6 +30,14 @@ public partial class NPC : AnimatedEntity
 
 	public IBaseInventory Inventory { get; protected set; }
 
+	[ConCmd.Server("npc_clear")]
+	public static void NpcClear()
+	{
+		foreach (var npc in Entity.All.OfType<NPC>().ToArray())
+			npc.Delete();
+		Log.Info("Killed All NPCs!");
+	}
+
 	public override void Spawn()
 	{
 		base.Spawn();
