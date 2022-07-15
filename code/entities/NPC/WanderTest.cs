@@ -12,6 +12,13 @@ public partial class Wandertest : NPC
 
 	public override bool HaveDress => false;
 
+	private bool IsScared;
+
+	private TimeSince TimeSinceLastIB;
+	private TimeSince TimeSinceFirstScared;
+
+	private Vector3 LastPosition {get; set;}
+
 	// public NavSteer Steer;
 
 	public override void Spawn()
@@ -24,5 +31,52 @@ public partial class Wandertest : NPC
 
 		var wander = new Sandbox.Nav.Wander();
 		Steer = wander;
+	}
+
+	public override void TakeDamage( DamageInfo info )
+	{
+		base.TakeDamage( info );
+
+		IsScared = true;
+		TimeSinceFirstScared = 0;
+
+		if (Rand.Int(1, 2) == 1)
+		{
+			PlaySound("scientist.hurt");
+		}
+	}
+
+	public override void Simulate(Client cl) 
+	{
+		base.Simulate(cl);
+
+		if (IsScared) 
+		{
+			SetAnimParameter("b_isscared", true);
+		}
+		
+		if (IsScared && TimeSinceFirstScared >= 50.0f) 
+		{
+			SetAnimParameter("b_isscared", false);
+		}
+
+		if (TimeSinceLastIB > 5.0f)
+		{
+			if (Rand.Int(1, 5) == 1) 
+			{
+				SetAnimParameter("b_idlebreaker", true);
+
+				TimeSinceLastIB = 0;
+			} 
+		}
+	}
+
+	public override void OnKilled() 
+	{
+		base.OnKilled();
+
+		LastPosition = Position;
+
+		Sound.FromWorld("scientist.death", LastPosition);
 	}
 }
