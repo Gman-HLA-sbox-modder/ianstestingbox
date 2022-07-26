@@ -1,7 +1,7 @@
 {
-  "Title": "Ians Test Game",
+  "Title": "Ian\u0027s Testing Addon",
   "Type": "game",
-  "Org": "local",
+  "Org": "gman",
   "Ident": "iantest",
   "Schema": 1,
   "HasAssets": true,
