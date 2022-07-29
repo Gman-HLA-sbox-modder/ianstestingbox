@@ -28,4 +28,12 @@ public partial class DummyWontDie : NPC
 
 		Log.Info( $"Dummy Take Damage: {damage}" );
 	}
+
+	public override void Spawn()
+	{
+		base.Spawn();
+		
+		SetModel( "models/scientist/scientist.vmdl" );
+		SetBodyGroup( 1, Rand.Int( 0, 3 ) );
+	}
 }

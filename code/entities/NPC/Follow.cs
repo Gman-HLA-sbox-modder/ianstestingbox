@@ -19,6 +19,15 @@ public partial class Follow : NPC
 		Target = rply[Rand.Int( 0, rply.Count() - 1 )];
 	}
 
+	public override void Spawn()
+	{
+		base.Spawn();
+
+		SetModel( "models/scientist/scientist.vmdl" );
+
+		SetBodyGroup( 1, Rand.Int( 0, 3 ) );
+	}
+
 	public override void OnTick()
 	{
 		if ( Target == null || Target.LifeState == LifeState.Dead )
