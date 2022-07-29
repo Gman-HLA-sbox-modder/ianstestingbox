@@ -27,23 +27,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ian\\.nuget\\packages\\": {},
+    "C:\\Users\\mancu\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Steam\\steamapps\\common\\sbox\\addons\\ianstestingbox\\code\\iantest.csproj",
+      "projectUniqueName": "E:\\Steam\\steamapps\\common\\sbox\\addons\\ianstestingbox\\code\\iantest.csproj",
       "projectName": "iantest",
-      "projectPath": "D:\\Steam\\steamapps\\common\\sbox\\addons\\ianstestingbox\\code\\iantest.csproj",
-      "packagesPath": "C:\\Users\\Ian\\.nuget\\packages\\",
-      "outputPath": "D:\\Steam\\steamapps\\common\\sbox\\addons\\ianstestingbox\\code\\obj\\",
+      "projectPath": "E:\\Steam\\steamapps\\common\\sbox\\addons\\ianstestingbox\\code\\iantest.csproj",
+      "packagesPath": "C:\\Users\\mancu\\.nuget\\packages\\",
+      "outputPath": "E:\\Steam\\steamapps\\common\\sbox\\addons\\ianstestingbox\\code\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mancu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -58,8 +58,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\base.csproj": {
-              "projectPath": "D:\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\base.csproj"
+            "E:\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\base.csproj": {
+              "projectPath": "E:\\Steam\\steamapps\\common\\sbox\\addons\\base\\code\\base.csproj"
             }
           }
         }
@@ -88,7 +88,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

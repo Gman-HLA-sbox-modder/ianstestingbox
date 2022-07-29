@@ -1,7 +1,7 @@
 using Sandbox;
 
 [Spawnable]
-[Library( "npc_dummy_wontdie", Title = "Dummy That Can't be killed" )]
+[Library( "npc_dummy_wontdie", Title = "Damage Checker" )]
 public partial class DummyWontDie : NPC
 {
 	[Net]
