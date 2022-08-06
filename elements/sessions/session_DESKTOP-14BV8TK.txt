@@ -1,0 +1,14 @@
+"E:\Steam\steamapps\common\sbox\bin\win64\sbox.exe" -tools -resizing
+
+E:\Steam\steamapps\common\sbox\addons\ianstestingbox\elements\sessions\session.dmx#0
+
+1280x720 @24.00 fps
+motion blur samples:    per-camera settings
+depth of field samples: 64
+
+Frame  	Frame  	Total  	Shot                   	Map                    	DoF    	MBlur  	Total
+Number 	Time   	Time   	Name                   	Name                   	Count  	Count  	Count
+      0	  0.579	      1	shot1                 	                      	   64	    8	   64
+      1	  0.569	      1	shot1                 	                      	   64	    8	   64
+      2	  0.573	      2	shot1                 	                      	   64	    8	   64
+      3	  0.604	      2	shot1                 	                      	   64	    8	   64
