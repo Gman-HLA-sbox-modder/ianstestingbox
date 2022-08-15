@@ -31,7 +31,7 @@ public partial class SpawnMenu : Panel
 				tabs.AddButtonActive( "Entities", ( b ) => ents.SetClass( "active", b ) );
 
 				var models = body.AddChild<CloudModelList>();
-				tabs.AddButtonActive( "s&works", ( b ) => models.SetClass( "active", b ) );
+				tabs.AddButtonActive( "asset.party", ( b ) => models.SetClass( "active", b ) );
 			}
 		}
 
@@ -60,7 +60,7 @@ public partial class SpawnMenu : Panel
 
 		foreach ( var entry in TypeLibrary.GetDescriptions<BaseTool>() )
 		{
-			if ( entry.Title == "BaseTool" )
+			if ( entry.Name == "BaseTool" )
 				continue;
 
 			var button = toollist.Add.Button( entry.Title );
@@ -76,14 +76,42 @@ public partial class SpawnMenu : Panel
 			} );
 		}
 	}
-
+	public bool open = false;
 	public override void Tick()
 	{
 		base.Tick();
 
-		Parent.SetClass( "spawnmenuopen", Input.Down( InputButton.Menu ) );
+		if ( Input.VR.LeftHand.ButtonB.WasPressed )
+		{
+			Log.Info( "menu open/close" );
+			OpenCheck();
+		}
+
+		if ( Input.Pressed( InputButton.Menu ) & !open )
+			open = true;
+		else if ( Input.Pressed( InputButton.Menu ) & open )
+			open = false;
+		Parent.SetClass( "spawnmenuopen", open );
 
 		UpdateActiveTool();
+	}
+
+	public void OpenCheck()
+	{
+		if ( open == true )
+		{
+			open = false;
+		}
+		else
+		{
+			open = true;
+		}
+	}
+
+	public override void OnButtonEvent( ButtonEvent e )
+	{
+		if ( e.Button == "escape" )
+			open = false;
 	}
 
 	void UpdateActiveTool()

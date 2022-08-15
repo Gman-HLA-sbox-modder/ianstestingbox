@@ -60,6 +60,20 @@ public partial class PhysGun : Carriable
 				grabbing = true;
 		}
 
+		if ( Input.VR.LeftHand.ButtonA.IsPressed )
+		{
+			Log.Info( "Pressed" );
+			(Owner as AnimatedEntity)?.SetAnimParameter( "b_attack", true );
+
+			if ( !grabbing )
+				grabbing = true;
+		}
+		else 
+		{
+			if ( !grabbing )
+				grabbing = false;
+		}
+
 		bool grabEnabled = grabbing && Input.Down( InputButton.PrimaryAttack );
 		bool wantsToFreeze = Input.Pressed( InputButton.SecondaryAttack );
 

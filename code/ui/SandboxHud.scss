@@ -1,5 +1,4 @@
-Health
-{
+Health {
 	position: absolute;
 	right: 100px;
 	bottom: 48px;
@@ -10,15 +9,14 @@ Health
 	padding: 0 20px;
 	align-items: center;
 	font-family: Poppins;
-	background-color: rgba( #333, 0.4 );
+	background-color: rgba(0, 20, 93, 1);
 	backdrop-filter: blur( 20px );
 	border-radius: 10px;
 }
 
-CurrentTool
-{
+CurrentTool {
 	position: absolute;
-	background-color: rgba( #3472e6, 0.8 );
+	background-color: rgba( #3472e6, 1 );
 	backdrop-filter: blur( 50px );
 	border-radius: 10px;
 	top: 100px;
@@ -28,13 +26,11 @@ CurrentTool
 	opacity: 0.0;
 
 
-	&.active
-	{
+	&.active {
 		opacity: 1.0;
 	}
 
-	.title
-	{
+	.title {
 		font-size: 40px;
 		color: white;
 		font-family: Poppins;
@@ -43,8 +39,7 @@ CurrentTool
 		text-transform: uppercase;
 	}
 
-	.description
-	{
+	.description {
 		font-size: 14px;
 		font-weight: normal;
 		color: white;
@@ -56,32 +51,26 @@ CurrentTool
 	}
 }
 
-.spawnmenuopen CurrentTool
-{
+.spawnmenuopen CurrentTool {
 	opacity: 0.01;
 }
 
-rootpanel
-{
+rootpanel {
 	background-color: rgba( #333, 0 );
 	transition: background-color 0.2s ease-in;
 
-	&.spawnmenuopen
-	{
+	&.spawnmenuopen {
 		transition: background-color 0.3s ease-out;
-		background-color: rgba( #333, 0.9 );
 	}
 
 
-	&.devcamera
-	{
+	&.devcamera {
 		display: none;
 	}
 }
 
 
-InventoryBar
-{
+InventoryBar {
 	position: absolute;
 	width: 100%;
 	bottom: 48px;
@@ -89,8 +78,7 @@ InventoryBar
 	align-items: flex-end;
 }
 
-InventoryIcon
-{
+InventoryIcon {
 	width: 80px;
 	height: 80px;
 	margin: 0px 2px;
@@ -98,12 +86,11 @@ InventoryIcon
 	transition: all 0.6s ease-in-out;
 	margin-top: 10px;
 	font-family: poppins;
-	background-color: rgba( #333, 0.3 );
+	background-color: rgba(0, 37, 171, 1);
 	backdrop-filter: blur( 50px );
 	border-radius: 10px;
 
-	.item-name
-	{
+	.item-name {
 		padding: 5px;
 		color: white;
 		text-align: center;
@@ -118,32 +105,28 @@ InventoryIcon
 		mix-blend-mode: lighten;
 	}
 
-	.slot-number
-	{
+	.slot-number {
 		font-size: 25px;
 		color: black;
 		font-weight: 900;
-		opacity: 0.3;
+		opacity: 1;
 		position: absolute;
 		top: 1px;
 		right: 5px;
 	}
 
-	&.active
-	{
+	&.active {
 		background-color: rgba( #3472e6, 1 );
 		transition: all 0.1s ease-out;
 		width: 100px;
 		height: 100px;
 
-		.slot-number
-		{
+		.slot-number {
 			color: #fff;
-			opacity : 1;
+			opacity: 1;
 		}
 
-		.item-name
-		{
+		.item-name {
 			opacity: 1;
 			transition: all 0.1s ease-out;
 			font-size: 13px;

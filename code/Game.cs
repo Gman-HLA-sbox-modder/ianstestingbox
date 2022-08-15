@@ -13,13 +13,20 @@ partial class SandboxGame : Game
 		}
 	}
 
-	public override void ClientJoined( Client cl )
+	public override void ClientJoined( Client client )
 	{
-		base.ClientJoined( cl );
-		var player = new SandboxPlayer( cl );
-		player.Respawn();
+		base.ClientJoined( client );
 
-		cl.Pawn = player;
+		var player = new SandboxPlayer();
+		client.Pawn = player;
+
+		player.Respawn();
+	}
+
+	public override void ClientDisconnect( Client cl, NetworkDisconnectionReason reason )
+	{
+		base.ClientDisconnect( cl, reason );
+		
 	}
 
 	protected override void OnDestroy()
@@ -155,4 +162,5 @@ partial class SandboxGame : Game
 	{
 		KillFeed.Current?.AddEntry( leftid, left, rightid, right, method );
 	}
+
 }

@@ -16,6 +16,29 @@ partial class Shotgun : Weapon
 		SetModel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" );
 	}
 
+	public void VRControl()
+	{
+		if ( Input.VR.LeftHand.ButtonA.IsPressed )
+		{
+			Log.Info( "Shooting" );
+			TimeSincePrimaryAttack = 0;
+			TimeSinceSecondaryAttack = 0;
+
+			(Owner as AnimatedEntity)?.SetAnimParameter( "b_attack", true );
+
+			//
+			// Tell the clients to play the shoot effects
+			//
+			ShootEffects();
+			PlaySound( "rust_pumpshotgun.shoot" );
+
+			//
+			// Shoot the bullets
+			//
+			ShootBullets( 10, 0.1f, 10.0f, 9.0f, 3.0f );
+		}
+	}
+
 	public override void AttackPrimary()
 	{
 		TimeSincePrimaryAttack = 0;

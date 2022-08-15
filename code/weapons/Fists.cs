@@ -13,6 +13,15 @@ partial class Fists : Weapon
 		return false;
 	}
 
+	public void VRControl()
+	{
+		if ( Input.VR.RightHand.ButtonA.IsPressed )
+		{
+			Log.Info( "Shooting" );
+			Attack( true );
+		}
+	}
+
 	private void Attack( bool leftHand )
 	{
 		if ( MeleeAttack() )
@@ -74,7 +83,7 @@ partial class Fists : Weapon
 
 		bool hit = false;
 
-		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 80, 20.0f ) )
+		foreach ( var tr in TraceMelee( Owner.EyePosition, Owner.EyePosition + forward * 80, 20.0f ) )
 		{
 			if ( !tr.Entity.IsValid() ) continue;
 

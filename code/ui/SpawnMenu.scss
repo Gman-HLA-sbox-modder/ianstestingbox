@@ -1,5 +1,4 @@
-﻿spawnmenu
-{
+﻿spawnmenu {
 	left: 0px;
 	right: 0px;
 	top: 0px;
@@ -12,16 +11,15 @@
 	position: absolute;
 	font-family: poppins;
 	opacity: 0;
+	z-index: 200;
 
-	.tabs
-	{
+	.tabs {
 		font-size: 16px;
 		flex-shrink: 0;
 		margin-bottom: 4px;
 		padding-left: 10px;
 
-		button
-		{
+		button {
 			padding: 6px 5px;
 			margin-right: 10px;
 			font-size: 23px;
@@ -32,18 +30,15 @@
 			cursor: pointer;
 			font-family: Poppins;
 			//border-radius: 5px;
-			label
-			{
+			label {
 				text-shadow: 1px 1px 4px rgba( black, 0.2 );
 			}
 
-			&:hover
-			{
+			&:hover {
 				opacity: 1;
 			}
 
-			&.active
-			{
+			&.active {
 				transform: scale( 1 );
 				opacity: 1;
 				color: #fff;
@@ -53,25 +48,22 @@
 		}
 	}
 
-	.left
-	{
+	.left {
 		flex-grow: 1;
 		flex-direction: column;
 		position: relative;
 		left: -500px;
 		transition: all 0.3s ease-in;
 
-		.body
-		{
+		.body {
 			border-radius: 10px;
-			background-color: rgba( #111, 0.4 );
+			background-color: rgba(0, 20, 93, 1);
 			flex-grow: 1;
 			backdrop-filter: blur( 100px );
 		}
 	}
 
-	.right
-	{
+	.right {
 		margin-left: 10px;
 		flex-direction: column;
 		min-width: 450px;
@@ -79,44 +71,38 @@
 		left: 500px;
 		transition: all 0.3s ease-in;
 
-		.body
-		{
+		.body {
 			//	background-color: rgba( #333, 0.95 );
 			flex-grow: 1;
 			border-radius: 10px;
-			background-color: rgba( #111, 0.4 );
+			background-color: rgba(0, 20, 93, 1);
 			padding: 10px;
 			backdrop-filter: blur( 100px );
 
-			.toollist
-			{
+			.toollist {
 				flex-direction: column;
 				width: 150px;
 				color: #aaa;
 
-				button
-				{
+				button {
 					padding: 3px 10px;
 					font-size: 11px;
 					transition: all 0.2s ease-out;
 					cursor: pointer;
 
-					&:hover
-					{
+					&:hover {
 						//border-left: 3px solid #3273eb;
 						color: white;
 					}
 
-					&.active
-					{
+					&.active {
 						//border-left: 5px solid #3273eb;
 						color: white;
 					}
 				}
 			}
 
-			.inspector
-			{
+			.inspector {
 				//background-color: rgba( #111, 0.7 );
 				flex-grow: 1;
 				margin-left: 5px;
@@ -126,33 +112,28 @@
 	}
 }
 
-.spawnmenuopen spawnmenu
-{
+.spawnmenuopen spawnmenu {
 	transition: all 0.2s ease-out;
 	pointer-events: all;
 	opacity: 1;
 	transform: scale( 1 );
 
-	.left, .right
-	{
+	.left, .right {
 		left: 0;
 		transition: all 0.1s ease-out;
 	}
 }
 
 
-.spawnpage
-{
+.spawnpage {
 	display: none;
 
-	&.active
-	{
+	&.active {
 		display: flex;
 		opacity: 1;
 	}
 
-	.canvas
-	{
+	.canvas {
 		overflow: scroll;
 		width: 100%;
 		flex-grow: 1;
@@ -161,13 +142,11 @@
 		margin: 10px;
 		border-radius: 5px;
 
-		.cell
-		{
+		.cell {
 			padding: 5px;
 		}
 
-		.icon
-		{
+		.icon {
 			border-radius: 8px;
 			color: rgba( #fff, 0.5 );
 			font-size: 12px;
@@ -180,8 +159,7 @@
 			background-color: rgba(black, 0.0);
 			background-image: url( /entity/spawnicon.png );
 
-			label
-			{
+			label {
 				font-size: 9px;
 				position: absolute;
 				bottom: -17px;
@@ -190,33 +168,28 @@
 				pointer-events: none;
 			}
 
-			&:hover
-			{
+			&:hover {
 				color: #fff;
 				background-color: rgba(black, 0.1);
 			}
 
-			&:active
-			{
+			&:active {
 			}
 		}
 	}
 }
 
 
-spawnmenu .sidebar
-{
+spawnmenu .sidebar {
 	flex-direction: column;
 	width: 30px;
 	padding: 10px;
 
-	.group
-	{
+	.group {
 		flex-direction: column;
 	}
 
-	button
-	{
+	button {
 		cursor: pointer;
 		border-radius: 5px;
 		color: white;
@@ -224,8 +197,7 @@ spawnmenu .sidebar
 }
 
 
-icon, iconpanel
-{
+icon, iconpanel {
 	font-family: "material icons";
 	flex-grow: 1;
 	text-align: left;

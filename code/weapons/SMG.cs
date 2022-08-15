@@ -17,6 +17,29 @@ partial class SMG : Weapon
 		SetModel( "weapons/rust_smg/rust_smg.vmdl" );
 	}
 
+	public void VRControl()
+	{
+		if ( Input.VR.LeftHand.ButtonA.IsPressed )
+		{
+			Log.Info( "Shooting" );
+			TimeSincePrimaryAttack = 0;
+			TimeSinceSecondaryAttack = 0;
+
+			(Owner as AnimatedEntity)?.SetAnimParameter( "b_attack", true );
+
+			//
+			// Tell the clients to play the shoot effects
+			//
+			ShootEffects();
+			PlaySound( "rust_smg.shoot" );
+
+			//
+			// Shoot the bullets
+			//
+			ShootBullet( 0.1f, 1.5f, 5.0f, 3.0f );
+		}
+	}
+
 	public override void AttackPrimary()
 	{
 		TimeSincePrimaryAttack = 0;

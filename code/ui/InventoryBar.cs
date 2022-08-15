@@ -1,6 +1,7 @@
 ﻿using Sandbox;
 using Sandbox.UI;
 using System.Collections.Generic;
+using VrExample;
 
 public class InventoryBar : Panel
 {
@@ -73,6 +74,18 @@ public class InventoryBar : Panel
 		if ( input.Pressed( InputButton.Slot9 ) ) SetActiveSlot( input, inventory, 8 );
 
 		if ( input.MouseWheel != 0 ) SwitchActiveSlot( input, inventory, -input.MouseWheel );
+
+		if ( Input.VR.LeftHand.JoystickPress.WasPressed )
+		{
+			Log.Info( "menu open/close" );
+			SwitchActiveSlot( input, inventory, -1 );
+		}
+
+		if ( Input.VR.RightHand.JoystickPress.WasPressed )
+		{
+			Log.Info( "menu open/close" );
+			SwitchActiveSlot( input, inventory, +1 );
+		}
 	}
 
 	private static void SetActiveSlot( InputBuilder input, IBaseInventory inventory, int i )

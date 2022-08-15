@@ -18,6 +18,22 @@ partial class Pistol : Weapon
 		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
 	}
 
+	public void VRControl()
+	{
+		if ( Input.VR.LeftHand.ButtonA.IsPressed )
+		{
+			Log.Info( "Shooting" );
+			TimeSincePrimaryAttack = 0;
+			TimeSinceSecondaryAttack = 0;
+
+			(Owner as AnimatedEntity)?.SetAnimParameter( "b_attack", true );
+
+			ShootEffects();
+			PlaySound( "rust_pistol.shoot" );
+			ShootBullet( 0.05f, 1.5f, 9.0f, 3.0f );
+		}
+	}
+
 	public override bool CanPrimaryAttack()
 	{
 		return base.CanPrimaryAttack() && Input.Pressed( InputButton.PrimaryAttack );

@@ -1,10 +1,31 @@
 ﻿using Sandbox;
+using VrExample;
 using System;
 
 partial class SandboxPlayer : Player
 {
 	private TimeSince timeSinceDropped;
 	private TimeSince timeSinceJumpReleased;
+
+	[Net, Local] public LeftHand LeftHand { get; set; }
+	[Net, Local] public RightHand RightHand { get; set; }
+
+	private void CreateHands()
+	{
+		DeleteHands();
+
+		LeftHand = new() { Owner = this };
+		RightHand = new() { Owner = this };
+
+		LeftHand.Other = RightHand;
+		RightHand.Other = LeftHand;
+	}
+
+	private void DeleteHands()
+	{
+		LeftHand?.Delete();
+		RightHand?.Delete();
+	}
 
 	private DamageInfo lastDamage;
 
@@ -34,11 +55,17 @@ partial class SandboxPlayer : Player
 	{
 		SetModel( "models/citizen/citizen.vmdl" );
 
-		Controller = new WalkController();
-
-		if ( DevController is NoclipController )
+		if ( Client.IsUsingVr )
 		{
-			DevController = null;
+			Controller = new VrExample.WalkController();
+			Animator = new PlayerAnimator();
+			CameraMode = new FirstPersonCamera();
+		}
+		else
+		{
+			Controller = new Sandbox.WalkController();
+			Animator = new StandardPlayerAnimator();
+			CameraMode = new FirstPersonCamera();
 		}
 
 		EnableAllCollisions = true;
@@ -46,7 +73,10 @@ partial class SandboxPlayer : Player
 		EnableHideInFirstPerson = true;
 		EnableShadowInFirstPerson = true;
 
-		Clothing.DressEntity( this );
+		CreateHands();
+
+		if ( Client.IsUsingVr )
+			SetBodyGroup( "Hands", 1 ); // Hide hands
 
 		Inventory.Add( new PhysGun(), true );
 		Inventory.Add( new GravGun() );
@@ -54,10 +84,89 @@ partial class SandboxPlayer : Player
 		Inventory.Add( new Pistol() );
 		Inventory.Add( new Flashlight() );
 		Inventory.Add( new Fists() );
+		Inventory.Add( new Hands() );
 
 		CameraMode = new FirstPersonCamera();
 
 		base.Respawn();
+	}
+
+	[ClientRpc]
+	public void DidDamage( Vector3 pos, float amount, float healthinv, bool isdeath )
+	{
+		Sound.FromScreen( "dm.ui_attacker" )
+			.SetPitch( 1 + healthinv * 1 );
+	}
+
+	public override void FrameSimulate( Client cl )
+	{
+		base.FrameSimulate( cl );
+
+		LeftHand?.FrameSimulate( cl );
+		RightHand?.FrameSimulate( cl );
+	}
+
+	public void SetVrAnimProperties()
+	{
+		if ( LifeState != LifeState.Alive )
+			return;
+
+		if ( !Input.VR.IsActive )
+			return;
+
+		SetAnimParameter( "b_vr", true );
+		var leftHandLocal = Transform.ToLocal( LeftHand.GetBoneTransform( 0 ) );
+		var rightHandLocal = Transform.ToLocal( RightHand.GetBoneTransform( 0 ) );
+
+		var handOffset = Vector3.Zero;
+		SetAnimParameter( "left_hand_ik.position", leftHandLocal.Position + (handOffset * leftHandLocal.Rotation) );
+		SetAnimParameter( "right_hand_ik.position", rightHandLocal.Position + (handOffset * rightHandLocal.Rotation) );
+
+		SetAnimParameter( "left_hand_ik.rotation", leftHandLocal.Rotation * Rotation.From( 0, 0, 180 ) );
+		SetAnimParameter( "right_hand_ik.rotation", rightHandLocal.Rotation );
+
+		float height = Input.VR.Head.Position.z - Position.z;
+		SetAnimParameter( "duck", 1.0f - ((height - 32f) / 32f) ); // This will probably need tweaking depending on height
+	}
+
+	private TimeSince timeSinceLastRotation;
+	private void CheckRotate()
+	{
+		if ( !IsServer )
+			return;
+
+		const float deadzone = 0.2f;
+		const float angle = 45f;
+		const float delay = 0.25f;
+
+		float rotate = Input.VR.RightHand.Joystick.Value.x;
+
+		if ( timeSinceLastRotation > delay )
+		{
+			if ( rotate > deadzone )
+			{
+				Transform = Transform.RotateAround(
+					Input.VR.Head.Position.WithZ( Position.z ),
+					Rotation.FromAxis( Vector3.Up, -angle )
+				);
+
+				timeSinceLastRotation = 0;
+			}
+			else if ( rotate < -deadzone )
+			{
+				Transform = Transform.RotateAround(
+					Input.VR.Head.Position.WithZ( Position.z ),
+					Rotation.FromAxis( Vector3.Up, angle )
+				);
+
+				timeSinceLastRotation = 0;
+			}
+		}
+
+		if ( rotate > -deadzone && rotate < deadzone )
+		{
+			timeSinceLastRotation = 10;
+		}
 	}
 
 	public override void OnKilled()
@@ -87,6 +196,17 @@ partial class SandboxPlayer : Player
 
 		Inventory.DropActive();
 		Inventory.DeleteContents();
+
+		DeleteHands();
+	}
+
+	public override void PostCameraSetup( ref CameraSetup setup )
+	{
+		// You will probably need to tweak these depending on your use case
+		setup.ZNear = 1;
+		setup.ZFar = 25000;
+
+		base.PostCameraSetup( ref setup );
 	}
 
 	public override void TakeDamage( DamageInfo info )
@@ -101,13 +221,6 @@ partial class SandboxPlayer : Player
 		TookDamage( lastDamage.Flags, lastDamage.Position, lastDamage.Force );
 
 		base.TakeDamage( info );
-	}
-
-	[ClientRpc]
-	public void DidDamage( Vector3 pos, float amount, float healthinv, bool isdeath )
-	{
-		Sound.FromScreen( "dm.ui_attacker" )
-			.SetPitch( 1 + healthinv * 1 );
 	}
 
 	[ClientRpc]
@@ -183,6 +296,12 @@ partial class SandboxPlayer : Player
 		{
 			timeSinceJumpReleased = 1;
 		}
+
+		CheckRotate();
+		SetVrAnimProperties();
+
+		LeftHand?.Simulate( cl );
+		RightHand?.Simulate( cl );
 	}
 
 	Entity lastWeapon;
@@ -206,6 +325,7 @@ partial class SandboxPlayer : Player
 		animHelper.AimAngle = Input.Rotation;
 		animHelper.FootShuffle = shuffle;
 		animHelper.DuckLevel = MathX.Lerp( animHelper.DuckLevel, controller.HasTag( "ducked" ) ? 1 : 0, Time.Delta * 10.0f );
+		animHelper.VoiceLevel = ( Host.IsClient && Client.IsValid() ) ? Client.TimeSinceLastVoice < 0.5f ? Client.VoiceLevel : 0.0f : 0.0f;
 		animHelper.IsGrounded = GroundEntity != null;
 		animHelper.IsSitting = controller.HasTag( "sitting" );
 		animHelper.IsNoclipping = controller.HasTag( "noclip" );
@@ -215,7 +335,6 @@ partial class SandboxPlayer : Player
 
 		if ( controller.HasEvent( "jump" ) ) animHelper.TriggerJump();
 		if ( ActiveChild != lastWeapon ) animHelper.TriggerDeploy();
-
 
 		if ( ActiveChild is BaseCarriable carry )
 		{
@@ -235,6 +354,11 @@ partial class SandboxPlayer : Player
 		if ( timeSinceDropped < 1 ) return;
 
 		base.StartTouch( other );
+	}
+
+	public override float FootstepVolume()
+	{
+		return Velocity.WithZ( 0 ).Length.LerpInverse( 0.0f, 200.0f ) * 5.0f;
 	}
 
 	[ConCmd.Server( "inventory_current" )]
@@ -261,25 +385,4 @@ partial class SandboxPlayer : Player
 			break;
 		}
 	}
-
-	[ConCmd.Admin]
-	public static void ent_create( string entity )
-	{
-		var ply = ConsoleSystem.Caller.Pawn as SandboxPlayer;
-
-		Type type = Type.GetType( entity );
-		var ent = TypeLibrary.Create( entity, type ) as Entity;
-
-		var tr = Trace.Ray( ply.EyePosition, ply.EyePosition + ply.EyeRotation.Forward * 5000 )
-					.UseHitboxes()
-					.WithAnyTags( "solid", "player", "npc" )
-					.Ignore( ply )
-					.Size( 2 );
-
-		ent.Position = tr.Run().HitPosition;
-
-		//var prize = TypeLibrary.Create( lootTable[index], t ) as Entity;
-		//prize.Position = Position;
-	}
-
 }
