@@ -12,7 +12,8 @@ public partial class SandboxHud : HudEntity<RootPanel>
 			if ( Global.IsRunningInVR )
 			{
 				// Use a world panel - we're in VR
-				_ = new VrExample.HudEntity();
+				_ = new VrExample.HealthHudEntity();
+				_ = new VrExample.VRInventoryHud();
 			}
 			else
 			{

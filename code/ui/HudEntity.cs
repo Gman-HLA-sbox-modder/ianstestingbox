@@ -6,23 +6,15 @@ namespace VrExample;
 /// <summary>
 /// This will project the example HUD onto your left wrist
 /// </summary>
-public class HudEntity : WorldPanel
+public class HealthHudEntity : WorldPanel
 {
-	public HudEntity()
+	public HealthHudEntity()
 	{
 		SetClass( "is-vr", true );
 
-		StyleSheet.Load( "/ui/SandboxHud.scss" );
+		StyleSheet.Load( "/ui/VRHealth.scss" );
 
-		AddChild<ChatBox>();
-		AddChild<VoiceList>();
-		AddChild<VoiceSpeaker>();
-		AddChild<KillFeed>();
-		AddChild<Scoreboard<ScoreboardEntry>>();
-		AddChild<Health>();
-		AddChild<InventoryBar>();
-		AddChild<CurrentTool>();
-		AddChild<SpawnMenu>();
+		AddChild<VRHealth>();
 	}
 
 	public override void Tick()

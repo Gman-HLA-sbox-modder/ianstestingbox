@@ -33,11 +33,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Documents\\S&box Projects\\Sandbox-with-VR-support\\code\\sandbox_vr.csproj",
-      "projectName": "sandbox_vr",
-      "projectPath": "E:\\Documents\\S&box Projects\\Sandbox-with-VR-support\\code\\sandbox_vr.csproj",
+      "projectUniqueName": "E:\\Documents\\S&box Projects\\ianstestingbox\\code\\iantest.csproj",
+      "projectName": "iantest",
+      "projectPath": "E:\\Documents\\S&box Projects\\ianstestingbox\\code\\iantest.csproj",
       "packagesPath": "C:\\Users\\mancu\\.nuget\\packages\\",
-      "outputPath": "E:\\Documents\\S&box Projects\\Sandbox-with-VR-support\\code\\obj\\",
+      "outputPath": "E:\\Documents\\S&box Projects\\ianstestingbox\\code\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
