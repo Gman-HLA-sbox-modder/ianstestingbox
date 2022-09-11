@@ -1,5 +1,6 @@
 ﻿using Sandbox;
 using Sandbox.UI;
+using Sandbox.UI.Construct;
 using Sandbox.UI.Tests;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 public partial class CloudModelList : Panel
 {
 	public VirtualScrollPanel Canvas { get; set; }
+	public TextEntry TextEntry { get; set; }
 
 	public CloudModelList()
 	{
@@ -23,7 +25,8 @@ public partial class CloudModelList : Panel
 		Canvas.OnCreateCell = ( cell, data ) =>
 		{
 			var file = (Package)data;
-			var panel = cell.Add.Panel( "icon" );
+			var panel = cell.Add.Button( file.Title );
+			panel.AddClass( "icon" );
 			panel.AddEventListener( "onclick", () => ConsoleSystem.Run( "spawn", file.FullIdent ) );
 			panel.Style.BackgroundImage = Texture.Load( file.Thumb );
 		};
@@ -38,11 +41,17 @@ public partial class CloudModelList : Panel
 		q.Order = Package.Order.Newest;
 		q.Take = 200;
 		q.Skip = offset;
+		q.SearchText = TextEntry.Text;
 
 		var found = await q.RunAsync( default );
 		Canvas.SetItems( found );
 
 		// TODO - auto add more items here
+	}
+	public void ClearText()
+	{
+		TextEntry.Text = "";
+		RefreshItems();
 	}
 
 	public void RefreshItems()
@@ -50,5 +59,4 @@ public partial class CloudModelList : Panel
 		Canvas.Clear();
 		_ = UpdateItems();
 	}
-
 }

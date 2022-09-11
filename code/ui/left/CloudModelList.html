@@ -1,13 +1,13 @@
-﻿
-
-<root class="spawnpage">
-
+﻿<root class="spawnpage">
+	<div class="search">
+		<textentry onchange="RefreshItems()" style="color: white; width: 100%; align-items: center;" @ref="TextEntry" placeholder="" icon="search"></textentry>
+		<button style="color: white; width: 13%; background-color: black; border-radius: 10px; justify-content: center; align-items: center;" onclick="ClearText()">🗑 clear text</button>
+	</div>
 	<div class="sidebar">
 
 		<button onclick="RefreshItems()" icon="refresh"></button>
 
 	</div>
-
 	<VirtualScrollPanel @ref="Canvas" class="canvas"></VirtualScrollPanel>
 
 </root>

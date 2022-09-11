@@ -130,12 +130,14 @@
 
 	&.active {
 		display: flex;
+		flex-wrap: wrap;
 		opacity: 1;
 	}
 
 	.canvas {
 		overflow: scroll;
 		width: 100%;
+		height: 90%;
 		flex-grow: 1;
 		flex-wrap: wrap;
 		justify-content: space-between;
@@ -194,6 +196,16 @@ spawnmenu .sidebar {
 		border-radius: 5px;
 		color: white;
 	}
+}
+
+spawnmenu .search {
+	flex-direction: row;
+	width: 100%;
+	height: 7.5%;
+	overflow: hidden;
+	background-color: rgb(192, 192, 192,0.1);
+	padding: 10px;
+	border-radius: 5px;
 }
 
 
