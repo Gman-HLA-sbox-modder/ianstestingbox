@@ -24,14 +24,11 @@ public partial class SpawnMenu : Panel
 			var body = left.Add.Panel( "body" );
 
 			{
-				var props = body.AddChild<SpawnList>();
+				var props = body.AddChild<CloudModelList>();
 				tabs.SelectedButton = tabs.AddButtonActive( "Props", ( b ) => props.SetClass( "active", b ) );
 
 				var ents = body.AddChild<EntityList>();
 				tabs.AddButtonActive( "Entities", ( b ) => ents.SetClass( "active", b ) );
-
-				var models = body.AddChild<CloudModelList>();
-				tabs.AddButtonActive( "asset.party", ( b ) => models.SetClass( "active", b ) );
 			}
 		}
 
