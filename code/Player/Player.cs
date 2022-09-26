@@ -82,9 +82,51 @@ partial class SandboxPlayer : Player
 		Inventory.Add( new hl2_gravgun() );
 		Inventory.Add( new Tool() );
 
+		GiveAmmo( AmmoType.Pistol, 1000 );
+		GiveAmmo( AmmoType.Buckshot, 1000 );
+		GiveAmmo( AmmoType.Crossbow, 1000 );
+		GiveAmmo( AmmoType.Grenade, 1000 );
+		GiveAmmo( AmmoType.SMG, 1000 );
+		GiveAmmo( AmmoType.SMG_grenade, 1000 );
+		GiveAmmo( AmmoType.AR2, 1000 );
+		GiveAmmo( AmmoType.AR2_ball, 1000 );
+		GiveAmmo( AmmoType.SLAM, 1000 );
+		GiveAmmo( AmmoType.RPG, 1000 );
+		GiveAmmo( AmmoType.Magnum, 1000 );
+
 		CameraMode = new FirstPersonCamera();
 
 		base.Respawn();
+	}
+
+	[ConCmd.Admin]
+	public static void GiveAll()
+	{
+		var ply = ConsoleSystem.Caller.Pawn as SandboxPlayer;
+
+		ply.GiveAmmo( AmmoType.Pistol, 1000 );
+		ply.GiveAmmo( AmmoType.Buckshot, 1000 );
+		ply.GiveAmmo( AmmoType.Crossbow, 1000 );
+		ply.GiveAmmo( AmmoType.Grenade, 1000 );
+		ply.GiveAmmo( AmmoType.SMG, 1000 );
+		ply.GiveAmmo( AmmoType.SMG_grenade, 1000 );
+		ply.GiveAmmo( AmmoType.AR2, 1000 );
+		ply.GiveAmmo( AmmoType.AR2_ball, 1000 );
+		ply.GiveAmmo( AmmoType.SLAM, 1000 );
+		//ply.GiveAmmo( AmmoType.RPG, 1000 );
+		ply.GiveAmmo( AmmoType.Magnum, 1000 );
+
+
+
+		ply.Inventory.Add( new hl2_uspmatch() );
+		ply.Inventory.Add( new hl2_spas12() );
+		ply.Inventory.Add( new hl2_smg1() );
+		ply.Inventory.Add( new hl2_crossbow() );
+		ply.Inventory.Add( new hl2_ar2() );
+		ply.Inventory.Add( new hl2_357() );
+		ply.Inventory.Add( new hl2_stunstick() );
+		//ply.Inventory.Add( new hl2_rpg() );
+		ply.Inventory.Add( new hl2_grenade() );
 	}
 
 	[ClientRpc]
