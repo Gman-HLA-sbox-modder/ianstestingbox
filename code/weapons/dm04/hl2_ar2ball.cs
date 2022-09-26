@@ -1,7 +1,6 @@
 ﻿using Sandbox;
 
 
-[SpawnableAttribute]
 [Library( "hl2_ar2ball" )]
 [HideInEditor]
 partial class hl2_ar2ball : ModelEntity

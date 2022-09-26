@@ -1,7 +1,6 @@
 ﻿using Sandbox;
 
-[SpawnableAttribute]
-[Title( "Dev Gun" ), Category( "Weapons" )]
+[Title( "HLDM: Dev Gun" ), Category( "Weapons" )]
 partial class devgun : IanWeaponBase
 { 
 	public override string ViewModelPath => "models/weapons/dev/v_devgun.vmdl";

@@ -1,7 +1,7 @@
 ﻿using Sandbox;
 
 [SpawnableAttribute]
-[Library( "hl2_uspmatch", Title = "USP" )]
+[Library( "hl2_uspmatch", Title = "HLDM: USP Match" )]
 [EditorModel( "models/weapons/hl2_uspmatch/w_hl2_uspmatch.vmdl" )]
 partial class hl2_uspmatch : IanWeaponBase
 { 

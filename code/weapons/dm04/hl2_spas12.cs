@@ -1,7 +1,7 @@
 ﻿using Sandbox;
 
 [SpawnableAttribute]
-[Library( "hl2_spas12", Title = "SHOTGUN" )]
+[Library( "hl2_spas12", Title = "HLDM: Shotgun" )]
 [EditorModel( "models/weapons/hl2_spas12/w_hl2_spas12.vmdl" )]
 partial class hl2_spas12 : IanWeaponBase
 { 

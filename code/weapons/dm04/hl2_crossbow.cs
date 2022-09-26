@@ -1,7 +1,7 @@
 ﻿using Sandbox;
 
 [SpawnableAttribute]
-[Library( "hl2_crossbow", Title = "CROSSBOW" )]
+[Library( "hl2_crossbow", Title = "HLDM: Crossbow" )]
 [EditorModel( "models/weapons/hl2_crossbow/w_hl2_crossbow.vmdl" )]
 partial class hl2_crossbow : IanWeaponBase
 { 

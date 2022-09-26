@@ -1,7 +1,7 @@
 ﻿using Sandbox;
 
 [SpawnableAttribute]
-[Library( "hl2_stunstick", Title = "STUNSTICK" )]
+[Library( "hl2_stunstick", Title = "HLDM: Stunstick" )]
 [EditorModel( "models/weapons/hl2_crowbar/w_hl2_crowbar.vmdl" )]
 partial class hl2_stunstick : IanWeaponBase
 {

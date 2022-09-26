@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 [SpawnableAttribute]
-[Library( "hl2_slam", Title = "S.L.A.M (Selectable Lightweight Attack Munition" )]
+[Library( "hl2_slam", Title = "HLDM: S.L.A.M." )]
 [EditorModel( "models/weapons/hl2_grenade/w_hl2_grenade.vmdl" )]
 partial class hl2_slam : IanWeaponBase
 {

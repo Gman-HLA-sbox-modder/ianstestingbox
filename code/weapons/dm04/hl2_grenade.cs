@@ -1,7 +1,7 @@
 ﻿using Sandbox;
 
 [SpawnableAttribute]
-[Library( "hl2_grenade", Title = "GRENADE" )]
+[Library( "hl2_grenade", Title = "HLDM: Grenade" )]
 [EditorModel( "models/weapons/hl2_grenade/w_hl2_grenade.vmdl" )]
 partial class hl2_grenade : IanWeaponBase
 {

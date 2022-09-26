@@ -1,7 +1,7 @@
 ﻿using Sandbox;
 
 [SpawnableAttribute]
-[Library( "hl2_crowbar", Title = "CROWBAR" )]
+[Library( "hl2_crowbar", Title = "HLDM: Crowbar" )]
 [EditorModel( "models/weapons/hl2_crowbar/w_hl2_crowbar.vmdl" )]
 partial class hl2_crowbar : IanWeaponBase
 {

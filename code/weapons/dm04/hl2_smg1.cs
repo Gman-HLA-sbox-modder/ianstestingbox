@@ -2,7 +2,7 @@
 using System;
 
 [SpawnableAttribute]
-[Library( "hl2_smg1", Title = "SMG" )]
+[Library( "hl2_smg1", Title = "HLDM: SMG" )]
 [EditorModel( "models/weapons/hl2_smg1/w_hl2_smg1.vmdl" )]
 partial class hl2_smg1 : IanWeaponBase
 { 
