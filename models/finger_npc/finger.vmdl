@@ -43,7 +43,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/props/brba/finger/finger.fbx"
+						filename = "models/finger_npc/finger.fbx"
 						import_translation = [ 0.0, 0.0, 3780.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.008
