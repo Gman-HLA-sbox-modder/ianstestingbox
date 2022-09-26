@@ -1,7 +1,7 @@
 Health {
 	position: absolute;
-	right: 100px;
-	bottom: 48px;
+	left: 100px;
+	bottom: 28px;
 	font-size: 40px;
 	font-weight: bold;
 	color: white;
@@ -73,7 +73,8 @@ rootpanel {
 InventoryBar {
 	position: absolute;
 	width: 100%;
-	bottom: 48px;
+	bottom: 28px;
+	left: -142px;
 	justify-content: center;
 	align-items: flex-end;
 }

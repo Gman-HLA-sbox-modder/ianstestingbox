@@ -79,12 +79,8 @@ partial class SandboxPlayer : Player
 			SetBodyGroup( "Hands", 1 ); // Hide hands
 
 		Inventory.Add( new PhysGun(), true );
-		Inventory.Add( new GravGun() );
+		Inventory.Add( new hl2_gravgun() );
 		Inventory.Add( new Tool() );
-		Inventory.Add( new Pistol() );
-		Inventory.Add( new Flashlight() );
-		Inventory.Add( new Fists() );
-		Inventory.Add( new Hands() );
 
 		CameraMode = new FirstPersonCamera();
 

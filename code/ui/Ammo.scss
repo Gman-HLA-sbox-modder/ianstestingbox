@@ -1,0 +1,66 @@
+ammo {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+
+	Panel {
+		position: absolute;
+		background-color: rgba(0, 20, 93, 1);
+		border-radius: 7px;
+	}
+
+	Label {
+		position: absolute;
+	}
+
+	.Ammo {
+		right: 207px;
+		bottom: 27px;
+		width: 287px;
+		height: 81px;
+	}
+
+	.AmmoText {
+		left: 17px;
+		bottom: 15px;
+		font-family: Poppins;
+		font-size: 16.5px;
+		font-weight: 700;
+		color: rgb(255, 255, 255);
+	}
+
+	.Counter {
+		left: 90px;
+		bottom: -5px;
+		font-family: Poppins;
+        font-weight: bold;
+		font-size: 61px;
+		color: rgb(255, 255, 255);
+	}
+
+	.Reserve {
+		left: 220px;
+		bottom: 8px;
+		font-family: Poppins;
+		font-size: 31px;
+		font-weight: 700;
+		color: rgb(255, 255, 255);
+        font-weight: light;
+	}
+
+	.Alt {
+		right: 22px;
+		bottom: 27px;
+		width: 162px;
+		height: 81px;
+
+		.AmmoText {
+			left: 18px;
+			bottom: 11px;
+		}
+
+		.Counter {
+			left: 68px;
+		}
+	}
+}
