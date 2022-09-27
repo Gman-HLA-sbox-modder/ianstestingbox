@@ -97,6 +97,7 @@ public partial class SandboxPlayer
 			case AmmoType.Bugbait: return 99;
 			case AmmoType.Egon: return 5;
 			case AmmoType.Tripmine: return 5;
+			case AmmoType.Shit: return 5;
 
 		}
 
@@ -120,5 +121,6 @@ public enum AmmoType
 	SLAM,
 	Bugbait,
 	Egon,
-	Tripmine
+	Tripmine,
+	Shit
 }
